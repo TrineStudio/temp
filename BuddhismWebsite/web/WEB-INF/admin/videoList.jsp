@@ -87,7 +87,7 @@
                     </thead>
                         
                     <tbody>
-                        <input name="type" type="hidden" value="3"/>
+                        <input name="type" type="hidden" value="2"/>
                         <s:iterator id="media" value="medium">
                             <tr>
                                 <td><img src="<s:property value="mediaUrl" />" width="80px" height="80px"/></td>

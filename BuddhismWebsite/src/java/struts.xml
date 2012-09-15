@@ -302,10 +302,9 @@
         </action>
         <action name="multipleDelete" class="multipleDelete">
             <interceptor-ref name="myDefault" />
-            <result name="SUCCESS" type="redirect">managementAction.action</result>
-            <result name="CANCEL" type="redirect">photoPage.action</result>
-            <result name="ERROR" type="redirect">videoPage.action</result>
-            <result name="TRASH" type="redirect">articleTrash.action</result>
+            <result name="PHOTO" type="redirect">photoPage.action</result>
+            <result name="VIDEO" type="redirect">videoPage.action</result>
+            <result name="ARTICLE" type="redirect">managementAction.action</result>
             <result name="login">/WEB-INF/admin/login.jsp</result>
         </action>
         <action name="restoreArticle" class="restoreArticle">
@@ -313,7 +312,13 @@
             <result name="login">/WEB-INF/admin/login.jsp</result>
             <result name="SUCCESS" type="redirect">articleTrash.action</result>
         </action>
+        <action name="trashAction" class="TrashAction">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>       
+            <result name="SUCCESS" type="redirect">articleTrash.action</result>     
+        </action>
 
     </package>
     
 </struts>
+ 

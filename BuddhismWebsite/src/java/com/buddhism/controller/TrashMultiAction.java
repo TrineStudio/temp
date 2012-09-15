@@ -4,7 +4,6 @@
  */
 package com.buddhism.controller;
 
-import com.buddhism.service.AVService;
 import com.buddhism.service.postService;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -13,15 +12,22 @@ import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
- * @author Administrator
+ * @author 0
  */
-public class MultipleDelete implements SessionAware{        
+public class TrashMultiAction implements SessionAware{
+    
+    private postService pService;
     
     private int type;
     
-    private AVService aService;
+    private int selectIndex;
     
-    private postService pService;
+    private Map session;
+    
+    @Override
+    public void setSession(Map session) {   
+       this.session = session;   
+    }
 
     public postService getpService() {
         return pService;
@@ -31,8 +37,15 @@ public class MultipleDelete implements SessionAware{
         this.pService = pService;
     }
 
+    public int getSelectIndex() {
+        return selectIndex;
+    }
+
+    public void setSelectIndex(int selectIndex) {
+        this.selectIndex = selectIndex;
+    }
     
-    private Map session;
+    
 
     public int getType() {
         return type;
@@ -41,34 +54,17 @@ public class MultipleDelete implements SessionAware{
     public void setType(int type) {
         this.type = type;
     }
-
-    public AVService getaService() {
-        return aService;
-    }
-
-    public void setaService(AVService aService) {
-        this.aService = aService;
-    }
-           
-    @Override
-    public void setSession(Map session) {   
-       this.session = session;   
-    }
     
-    public String execute()
+  public String execute()
     {
         HttpServletRequest request = ServletActionContext.getRequest();
         String[] checkID = request.getParameterValues("checkall");
-        
-        deleteData(checkID);
+        if (selectIndex == 1)
+            deleteData(checkID);
+        else if (selectIndex == 2)
+            restoreData(checkID);
 
-        if (type == 1)
-            return "PHOTO";
-        else if (type == 2)
-            return "VIDEO";
-        else if (type ==3)
-            return "ARTICLE";
-        return "NONE";                    
+        return "SUCCESS";               
     }
     
     private void deleteData(String[] checkID)
@@ -76,10 +72,17 @@ public class MultipleDelete implements SessionAware{
         for (int i = 0; i != checkID.length; i++)
         {
             int id = Integer.parseInt(checkID[i]);
-            if (type == 3)
-                pService.removePost(id);
-            else
-                aService.deleteMedia(id);
+            pService.deletePost(id);
         }
     }      
+    
+    private void restoreData(String[] checkID)
+    {
+        for (int i = 0; i != checkID.length; i++)
+        {
+            int id = Integer.parseInt(checkID[i]);
+            pService.restorePost(id);
+        }
+    }
+    
 }

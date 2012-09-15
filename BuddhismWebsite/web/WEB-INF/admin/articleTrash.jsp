@@ -55,7 +55,7 @@
                 <h2>文章列表</h2>
             </div>
             <div class="contentbox">
-                <form action="multipleDelete.action">
+                <form action="trashAction.action">
             	<table width="100%">
                 	<thead>
                     	<tr>
@@ -67,7 +67,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <input type="hidden" value="4" name="type"/>
                          <s:iterator value="posts" id="singlePost">
                          <tr class="alt">
                         
@@ -90,8 +89,9 @@
                         <li><img src="<%=path%>/admin/img/icons/icon_approve.png" alt="Approve" /> 恢复</li>
                     </ul>
                 <div class="bulkactions">
-                    <select>
-                            <option>删除</option>
+                    <select name="selectIndex">
+                        <option value="1">删除</option>
+                        <option value="2">恢复</option>
                     </select>
                     <input type="submit" value="应用" class="btn" />
                 </div>

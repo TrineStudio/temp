@@ -77,7 +77,7 @@
                     </thead>
                     
                     <tbody>
-                        <input type="hidden" value="1" name="type"/>
+                        <input type="hidden" value="3" name="type"/>
                          <s:iterator value="posts" id="singlePost">
                          <tr class="alt">
                         

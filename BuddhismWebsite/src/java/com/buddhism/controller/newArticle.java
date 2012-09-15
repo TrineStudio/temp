@@ -10,6 +10,8 @@ import com.buddhism.service.administratorServiceImpl;
 import com.buddhism.service.postServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +31,16 @@ public class newArticle extends ActionSupport implements SessionAware{
     private administratorServiceImpl adService;
     private postServiceImpl postService;
     private Map session;
+    
+    private String releaseTime;
+
+    public String getReleaseTime() {
+        return releaseTime;
+    }
+
+    public void setReleaseTime(String releaseTime) {
+        this.releaseTime = releaseTime;
+    }        
     
  
     public File getFile() {
@@ -53,13 +65,19 @@ public class newArticle extends ActionSupport implements SessionAware{
     {
         Administrator admin = (Administrator) session.get("User");
         
+        String PATTERN_YYYY_MM_DD = "yyyy/MM/dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(PATTERN_YYYY_MM_DD);
+
         try 
         {
-           
+            Date date = simpleDateFormat.parse(releaseTime);
+            // setPost 多一个参数为时间，我传入的类型是 Date
+            // e.g. postService.setPost(admin, title, content, articleCat, date, false);
             Post post = postService.setPost(admin, title, content, articleCat, false);
             //TODO : Add the pic part
 
-        } catch (Exception ex) {
+        } catch (Exception ex) 
+        {
             Logger.getLogger(newArticle.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "SUCCESS";

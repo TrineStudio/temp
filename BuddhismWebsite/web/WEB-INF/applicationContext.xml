@@ -245,12 +245,17 @@
         </property>
     </bean>
     <bean id="multipleDelete" class="com.buddhism.controller.MultipleDelete">
-        <property name="pService">
-            <ref bean="postService"/>
-        </property>
         <property name="aService">
             <ref bean="avService"/>
         </property>        
+        <property name="pService">
+            <ref bean="postService"/>
+        </property>
+    </bean>
+    <bean id="TrashAction" class="com.buddhism.controller.TrashMultiAction">
+        <property name="pService">
+            <ref bean="postService"/>
+        </property>
     </bean>
     <bean id="restoreArticle" class="com.buddhism.controller.RestoreArticle" >
         <property name="service">

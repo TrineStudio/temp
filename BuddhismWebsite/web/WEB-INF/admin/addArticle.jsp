@@ -76,6 +76,8 @@
                     <input type="text" name="title" id="textfield" class="inputbox" style="width: 580px;"/> 
                     <span class="smltxt">文章类别</span>
                     <s:select list="cataList" name="articleCat" listKey="catId" listValue="catName" emptyOption="false"/> 
+                    <label for="releaseTime"><strong>发布时间</strong></label>
+                    <input type="text" name="releaseTime" id="releaseTime" class="inputbox" value="2012/09/15" style="width:180px"/> 
                 </p>
                 <textarea id="editor_id" name="content" style="width:560px;height:300px;" class="text-input textarea">
                 &lt;strong&gt;HTML内容&lt;/strong&gt;

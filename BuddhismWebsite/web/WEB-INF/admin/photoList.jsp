@@ -94,7 +94,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <input type="hidden" value="2" name="type"/>
+                            <input type="hidden" value="1" name="type"/>
                             <s:iterator id="media" value="medium">
                             <tr>
                                 <td><img src="<s:property value="mediaUrl" />" width="80px" height="80px"  class="magnify"  data-magnifyby="2" /></td>
