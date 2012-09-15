@@ -88,14 +88,12 @@
                             
                             <td>
                             	<a href="editArticle?postId=${id}" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
-                                <s:if test="postMedia == true">
-                                    <s:if test="postUp == true">
-                                        <a href="UpAction.action?id=${id}&&isUp=false" title=""><img src="<%=path%>/admin/img/icons/icon_unapprove.png" alt="Unapprove" /></a>
-                                    </s:if>
-                                    <s:else>
-                                        <a href="UpAction.action?id=${id}&&isUp=true" title=""><img src="<%=path%>/admin/img/icons/icon_approve.png" alt="Approve" /></a>
-                                    </s:else>
-                                </s:if>                          	
+                                <s:if test="postUp == true">
+                                    <a href="UpAction.action?id=${id}&&isUp=false" title=""><img src="<%=path%>/admin/img/icons/icon_unapprove.png" alt="Unapprove" /></a>
+                                </s:if>
+                                <s:else>
+                                    <a href="UpAction.action?id=${id}&&isUp=true" title=""><img src="<%=path%>/admin/img/icons/icon_approve.png" alt="Approve" /></a>
+                                </s:else>                       	
                                 <a href="removeToTrash.action?id=${id}" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
                             </td>
                             <td><input type="checkbox" value="${id}" name="checkall" /></td>

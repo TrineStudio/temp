@@ -24,6 +24,8 @@ public class MainPageAction implements SessionAware
     private List<Post> shares = new ArrayList<Post>();
     private List<Post> posts = new ArrayList<Post>();
     private List<Post> supports = new ArrayList<Post>();
+    
+    private List<String> postImages = new ArrayList<String>();
 
     private int count;
     
@@ -38,7 +40,17 @@ public class MainPageAction implements SessionAware
        this.session = session;   
   
   
-    }    
+    }
+
+    public List<String> getPostImages() {
+        return postImages;
+    }
+
+    public void setPostImages(List<String> postImages) {
+        this.postImages = postImages;
+    }
+    
+    
     
     public List<Post> getBuddleWords() {
         return buddleWords;
@@ -81,6 +93,20 @@ public class MainPageAction implements SessionAware
         temples = service.getPost((short)Constants.temples, 0, 5);
         shares = service.getPost((short)Constants.shares, 0, 5);
         supports = service.getPost((short)Constants.supports, 0, 5);
+        
+        // 增加一个函数来获取所有的置顶的 post 
+        
+        List<Post> temp = new ArrayList<Post>();
+
+        for (int i = 0; i != temp.size(); i++)
+        {
+            String content = temp.get(i).getPostContent();
+            int start = content.lastIndexOf("<img src=\"");
+            int end = start;
+            for (; content.charAt(end) != '\"'; end++);
+           
+            postImages.add(content.substring(start, end));
+       }
         
         putSession();
         

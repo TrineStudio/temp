@@ -317,6 +317,11 @@
             <result name="login">/WEB-INF/admin/login.jsp</result>       
             <result name="SUCCESS" type="redirect">articleTrash.action</result>     
         </action>
+        <action name="setAlbumFirst" class="setAlbumFirst">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>       
+            <result name="SUCCESS" type="redirect">photoPage.action</result>      
+        </action>
 
     </package>
     

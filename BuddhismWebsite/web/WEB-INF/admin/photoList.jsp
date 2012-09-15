@@ -72,7 +72,7 @@
                         </p>
                         <input type="submit" value="更改" class="btn" />
                     </form>
-            </s:if>
+                </s:if>
            </div>
        	</div>      
         <!-- Alternative Content Box Start -->
@@ -104,6 +104,9 @@
                                 <td>
                                     <a href="addMediaDes?mediaId=<s:property value="id" />" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
                                     <a href="deletePhoto?mediaId=<s:property value="id" />" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
+                                    <s:if test="packetId!=0">
+                                        <a href="setAlbumFirst?mediaId=<s:property value="id" />&packetID=<s:property value="packetId"/>" title=""><img src="<%=path%>/admin/img/icons/archlogo.png" alt="Top" /></a>
+                                    </s:if>
                                 </td>
                                 <td><input type="checkbox" value="${id}" name="checkall" /></td>
                             </tr>
@@ -114,6 +117,7 @@
                 	<ul>
                             <li><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /> 编辑</li>
                             <li><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /> 删除</li>
+                            <li><img src="<%=path%>/admin/img/icons/archlogo.png" alt="Delete" /> 设为封面</li>
                         </ul>
                     <div class="bulkactions">
                 

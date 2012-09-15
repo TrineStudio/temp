@@ -262,4 +262,9 @@
             <ref bean="postService"/>
         </property>
     </bean>
+    <bean id="setAlbumFirst" class="com.buddhism.controller.SetAlbumPicture">
+        <property name="service">
+            <ref bean="avService"/>
+        </property>
+    </bean>
 </beans>

@@ -91,6 +91,11 @@ String path = request.getContextPath();
 			<div id="pictureswall">	
 			    
 			   <div id="pictures">
+                               <ul>
+                                   <s:iterator id="imgPath" value="postImages">
+                                       <li><img src="<s:property value="imgPath"/>" /></li>
+                                   </s:iterator>
+                               </ul>
 			   </div>
 			</div>
 			</div>	  	

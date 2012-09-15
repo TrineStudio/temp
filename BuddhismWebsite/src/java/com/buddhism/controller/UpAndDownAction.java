@@ -5,6 +5,7 @@
 package com.buddhism.controller;
 
 import com.buddhism.model.Constants;
+import com.buddhism.model.Post;
 import com.buddhism.service.postService;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.PrintWriter;
@@ -50,6 +51,19 @@ public class UpAndDownAction extends ActionSupport implements ServletResponseAwa
         
        response.setCharacterEncoding("GBK"); 
        PrintWriter out = response.getWriter();
+       
+       Post post = service.getPost(id);
+       
+       String content = post.getPostContent();
+       
+       if (!content.contains("<img"))
+       {
+            out.print("<script>alert(\"这篇文章没有图片\")</script>");
+            out.print("<script>window.location.href=\'managementAction.action\'</script>");
+            out.flush();
+            out.close();
+            return "SUCCESS";  
+       }
         
        int number = service.getUpPostNumber();
        if (number == Constants.maxMainPagePics && isUp == true)

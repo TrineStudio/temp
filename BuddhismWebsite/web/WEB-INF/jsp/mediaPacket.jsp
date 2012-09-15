@@ -35,7 +35,7 @@
 
 
                                     <div class="block f16 cb1">
-                                        <div class="img"></div>
+                                        <div class="img"><img src="<s:property value="packetFirst"/>" width="80" height="80" /></div>
                                         <div class="title cw f12">
                                             <s:if test="type==5">
                                                 <a href="photoListAction?packetId=<s:property value="id"/>&title=<s:property value="packetTitle"/>"><s:property value="packetTitle"/></a>
