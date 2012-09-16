@@ -55,6 +55,8 @@ public class SetAlbumPicture implements SessionAware{
         // 加一个 SetFirst 函数来设置 Packet 的封面相册
         // 函数接受2个参数 一个是 packetID 还有一个是 mediaID
         
+        service.setPacketFirst(packetID, mediaID);
+        
         return "SUCCESS";
     
     }

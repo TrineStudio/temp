@@ -97,11 +97,14 @@ public class MainPageAction implements SessionAware
         // 增加一个函数来获取所有的置顶的 post 
         
         List<Post> temp = new ArrayList<Post>();
+        
+        temp = service.getUpPost();
 
         for (int i = 0; i != temp.size(); i++)
         {
             String content = temp.get(i).getPostContent();
-            int start = content.lastIndexOf("<img src=\"");
+            int start = content.indexOf("<img src=\"");
+            start += "<img src=\"".length();
             int end = start;
             for (; content.charAt(end) != '\"'; end++);
            

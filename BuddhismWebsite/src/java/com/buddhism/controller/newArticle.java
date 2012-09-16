@@ -71,10 +71,7 @@ public class newArticle extends ActionSupport implements SessionAware{
         try 
         {
             Date date = simpleDateFormat.parse(releaseTime);
-            // setPost 多一个参数为时间，我传入的类型是 Date
-            // e.g. postService.setPost(admin, title, content, articleCat, date, false);
-            Post post = postService.setPost(admin, title, content, articleCat, false);
-            //TODO : Add the pic part
+            Post post = postService.setPost(admin, title, content, articleCat, date, false);
 
         } catch (Exception ex) 
         {
