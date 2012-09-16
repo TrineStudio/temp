@@ -9,14 +9,9 @@ import com.buddhism.model.Media;
 import com.buddhism.model.Packet;
 import java.io.File;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -40,10 +35,14 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     public Packet getP(int id) 
     {
        Session s = this.getSession();
+       s.beginTransaction();
        
        String hql = "p.id = :id";
        Query query = s.createQuery(PACKETQUERYSTRING + hql);
        query.setParameter("id", (short)id);
+       
+       s.getTransaction().commit();
+       s.close();
        
        return (Packet)query.list().get(0);
     }
@@ -59,6 +58,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
        query.setParameter("title", name);
        
        s.getTransaction().commit();
+       s.close();
        
        return (Packet)query.list().get(0);
     }
@@ -125,6 +125,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
        query.executeUpdate();
        
        s.getTransaction().commit();
+       s.close();
     }
 
     @Override
@@ -147,6 +148,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
         query.executeUpdate();
         
         s.getTransaction().commit();
+        s.close();
     }
 
     @Override
@@ -211,7 +213,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
        path = ServletActionContext.getServletContext().getRealPath(path);
        File file = new File(path);
        
-        file.delete();
+       file.delete();
        
        Session s = this.getSession();
        s.beginTransaction();
@@ -222,7 +224,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
        query.executeUpdate();;
        
        s.getTransaction().commit();
-       
+       s.close();
     }
 
     @Override
@@ -243,6 +245,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
         query.executeUpdate();
         
         s.getTransaction().commit();
+        s.close();
     }
 
     @Override
@@ -345,47 +348,6 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     }
 
     @Override
-    public List<Media> getMediaBetweenAnd() 
-    {
-        Session s = this.getSession();
-        s.beginTransaction();
-        
-        Date date = new Date(System.currentTimeMillis());
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.MONTH, 6);
-        Date date2 = cal.getTime();
-        
-        String startStr = format.format(date);
-        String endStr = format.format(date2);
-        
-        Date startDate = null; //以当前时间作为起始时间
-        Date endDate = null;    //结束时间
-        
-        try 
-        {
-            startDate= format.parse(startStr);
-            endDate = format.parse(endStr);
-        } catch (ParseException ex) 
-        {
-            Logger.getLogger(AVDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        String hqlString = "select m from Media m where m.mediaDate between :start and :end";
-        Query query = s.createQuery(hqlString);
-        
-        query.setParameter("start", startDate);
-        query.setParameter("end", endDate);
-        
-        List list = query.list();
-        s.getTransaction().commit();
-        s.close();
-        
-        return (List<Media>)list;
-    }
-
-    @Override
     public int getMediaBetweenAnd(String start, String end, int type) 
     {
         Session s = this.getSession();
@@ -420,5 +382,6 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
         query.executeUpdate();
         
         s.getTransaction().commit();
+        s.close();
     }
 }

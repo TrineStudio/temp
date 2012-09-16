@@ -8,13 +8,8 @@ import com.buddhism.model.Administrator;
 import com.buddhism.model.Constants;
 import com.buddhism.model.Post;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -152,14 +147,17 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
     @Override
     public void Update(int id, boolean update) 
     {   
-        Post newPost = this.getPost(id);
-        
        Session s = this.getSession();
        s.beginTransaction();
-       Query query = s.createQuery("update Post p set p.postUp = "+ update + " where p.id = " + id);
+       
+       Query query = s.createQuery("update Post p set p.postUp = :up where p.id = :id");
+       query.setParameter("up", update);
+       query.setParameter("id", (short)id);
        
        query.executeUpdate();
+       
        s.getTransaction().commit();
+       s.close();
     }
 
     @Override
@@ -171,14 +169,16 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
     @Override
     public void delete(int  id) 
     {
-        
         Session s = this.getSession();
         s.beginTransaction();
         
-        Query query2 = s.createQuery("delete from Post p where p.id ="+ id);
+        Query query = s.createQuery("delete from Post p where p.id = :id");
+        query.setParameter("id", (short)id);
         
-        query2.executeUpdate();
+        query.executeUpdate();
+        
         s.getTransaction().commit();
+        s.close();
     }
 
     @Override
@@ -188,10 +188,12 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
         Session s = this.getSession();
         s.beginTransaction();
         
-        Query query = s.createQuery("update Post p set p.postCategory="+ (-post.getPostCategory()) + "where p.id="+id);
+        Query query = s.createQuery("update Post p set p.postCategory="+ (-post.getPostCategory()) + "where p.id= :id");
+        query.setParameter("id", (short)id);
         query.executeUpdate();
         
         s.getTransaction().commit();
+        s.close();
     }
 
     @Override
@@ -319,6 +321,7 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
         query.executeUpdate();
         
         s.getTransaction().commit();
+        s.close();
     }
 
     @Override
@@ -333,7 +336,9 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
         query.setParameter("id", postId);
         
         query.executeUpdate();
+        
         s.getTransaction().commit();
+        s.close();
     }
 
     @Override
@@ -349,47 +354,8 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
         List list = query.list();
         s.getTransaction().commit();
         s.close();
+        
         return ((Post)list.get(0)).getPostClickTimes();
-    }
-
-    @Override
-    public List<Post> getPostBetweenAnd() 
-    {
-        Session s = this.getSession();
-        s.beginTransaction();
-        
-        Date date = new Date(System.currentTimeMillis());
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.MONTH, 6);
-        Date date2 = cal.getTime();
-        
-        String startStr = format.format(date);
-        String endStr = format.format(date2);
-        
-        Date startDate = null; //以当前时间作为起始时间
-        Date endDate = null;    //结束时间
-        
-        try 
-        {
-            startDate= format.parse(startStr);
-            endDate = format.parse(endStr);
-        } catch (ParseException ex) 
-        {
-            Logger.getLogger(AVDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        String hqlString = "select p from Post p where p.postDate between :start and :end";
-        Query query = s.createQuery(hqlString);
-        
-        query.setParameter("start", startDate);
-        query.setParameter("end", endDate);
-        
-        List list = query.list();
-        s.close();
-        
-        return (List<Post>)list;
     }
 
     @Override
@@ -434,9 +400,12 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
         
         s.beginTransaction();
         
-        Query query = s.createQuery("update Post p set p.postCategory="+ (-post.getPostCategory()) + "where p.id="+id);
+        Query query = s.createQuery("update Post p set p.postCategory="+ (-post.getPostCategory()) + "where p.id= :id");
+        query.setParameter("id", (short)id);
+        
         query.executeUpdate();
         
         s.getTransaction().commit();
+        s.close();
     }
 }

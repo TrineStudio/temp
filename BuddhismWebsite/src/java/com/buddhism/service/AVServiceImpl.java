@@ -180,12 +180,6 @@ public class AVServiceImpl implements AVService
     }
 
     @Override
-    public List<Media> getMediaBetweenAnd() 
-    {
-        return avDao.getMediaBetweenAnd();
-    }
-
-    @Override
     public int getMediaBetweenAnd(String start, String end, int type) 
     {
         return avDao.getMediaBetweenAnd(start, end, type);

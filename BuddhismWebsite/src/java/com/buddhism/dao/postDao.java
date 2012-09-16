@@ -33,7 +33,6 @@ public interface postDao
     public void addPostClickTimes(int postId); //add post click times by 1
     public int getPostClickTimes(int postId);   //get post click times
     
-    public List<Post> getPostBetweenAnd(); //get post during a period of time
     
     public List<Post> getPostNameLike(String str);
     

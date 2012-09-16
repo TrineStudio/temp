@@ -28,7 +28,7 @@ public interface AVService
     
     public void updatePacket(Packet packet);
     
-    public void setPacketFirst(int packetId, int mediaId);
+    public void setPacketFirst(int packetId, int mediaId); //设置相册的封面
     
     public void addMedia(Media media);
     public void addMedia(Administrator ad, Packet packet, String mediaUrl, int mediaType, String mediaDesc,
@@ -48,8 +48,6 @@ public interface AVService
     
     public void addMediaClickTimes(int mediaId); //add click time by 1
     public int getMediaClickTimes(int mediaId); //get click times
-    
-    public List<Media> getMediaBetweenAnd();    //get media during a period of time
     
     public int getMediaBetweenAnd(String start, String end, int type); //get media amount between start and end which type is type.
 }
