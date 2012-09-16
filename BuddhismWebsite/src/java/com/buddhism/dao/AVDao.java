@@ -27,7 +27,8 @@ public interface AVDao
     
     public void deleteP(int id);
     
-    public void updatP(int id, int type, String name, String first, String desc, Date date);
+    public void updateP(int id, int type, String name, String first, String desc, Date date);
+    public void updateP(int packetId, int mediaId);
     
     public Media getM(int id);
     public Media getM(String title);

@@ -128,7 +128,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     }
 
     @Override
-    public void updatP(int id, int type, String name, String first, String desc, Date date) 
+    public void updateP(int id, int type, String name, String first, String desc, Date date) 
     {
         Session s = this.getSession();
         s.beginTransaction();
@@ -402,5 +402,23 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
         s.close();
         
         return list.size();
+    }
+
+    @Override
+    public void updateP(int packetId, int mediaId) 
+    {
+        Session s = this.getSession();
+        s.beginTransaction();
+        
+        Media media = this.getM(mediaId);
+        String hqlString = "update Packet as p set p.packetFirst = :first where p.id = :id";
+        
+        Query query = s.createQuery(hqlString);
+        query.setParameter("first", media.getMediaUrl());
+        query.setParameter("id", (short)packetId);
+        
+        query.executeUpdate();
+        
+        s.getTransaction().commit();
     }
 }

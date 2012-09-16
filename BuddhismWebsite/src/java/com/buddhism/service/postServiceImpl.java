@@ -3,6 +3,7 @@ package com.buddhism.service;
 import com.buddhism.dao.postDaoImpl;
 import com.buddhism.model.Administrator;
 import com.buddhism.model.Post;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 /**
@@ -183,6 +184,41 @@ public class postServiceImpl implements postService
     public void restorePost(int id) 
     {
        postDao.restore(id);
+    }
+
+    @Override
+    public List<Post> getUpPost() 
+    {
+        return postDao.getPost(true);
+    }
+
+    @Override
+    public Post setPost(Administrator postAuthor, String postTitle, String postContent, 
+    int postCategory, Date postDate, boolean postUp) throws Exception 
+    {
+        Post post = new Post();
+        
+        post.setAdministrator(postAuthor);
+        post.setId(1);
+        post.setPostCategory((short)postCategory);
+        post.setPostClickTimes(0);
+        post.setPostContent(postContent);
+        post.setPostTitle(postTitle);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(postDate);
+        Date date = new Date();
+        date.setTime(calendar.getTimeInMillis());
+        post.setPostDate(date);
+        post.setPostUp(postUp);
+        
+        try
+        {
+            postDao.addPost(post);
+            return post;
+        }catch(Exception err)
+        {
+            throw err;
+        }
     }
 
 }

@@ -28,6 +28,8 @@ public interface AVService
     
     public void updatePacket(Packet packet);
     
+    public void setPacketFirst(int packetId, int mediaId);
+    
     public void addMedia(Media media);
     public void addMedia(Administrator ad, Packet packet, String mediaUrl, int mediaType, String mediaDesc,
             int mediaClickTimes);

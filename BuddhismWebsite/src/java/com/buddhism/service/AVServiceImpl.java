@@ -118,7 +118,7 @@ public class AVServiceImpl implements AVService
     @Override
     public void updatePacket(Packet packet) 
     {
-        getAvDao().updatP(packet.getId(), packet.getPacketType(), packet.getPacketTitle(), 
+        getAvDao().updateP(packet.getId(), packet.getPacketType(), packet.getPacketTitle(), 
                 packet.getPacketFirst(), packet.getPacketDesc(), packet.getPacketDate());
     }
 
@@ -189,6 +189,12 @@ public class AVServiceImpl implements AVService
     public int getMediaBetweenAnd(String start, String end, int type) 
     {
         return avDao.getMediaBetweenAnd(start, end, type);
+    }
+
+    @Override
+    public void setPacketFirst(int packetId, int mediaId) 
+    {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }
