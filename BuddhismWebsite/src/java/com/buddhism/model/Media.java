@@ -1,5 +1,5 @@
 package com.buddhism.model;
-// Generated 2012-7-7 19:04:37 by Hibernate Tools 3.2.1.GA
+// Generated 2012-9-18 3:12:13 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -18,7 +18,7 @@ public class Media  implements java.io.Serializable {
      private String mediaDesc;
      private Date mediaDate;
      private int mediaClickTimes;
-     
+
     public Media() {
     }
 
@@ -30,6 +30,15 @@ public class Media  implements java.io.Serializable {
         this.mediaType = mediaType;
         this.mediaDate = mediaDate;
         this.mediaClickTimes = mediaClickTimes;
+    }
+    public Media(Packet packet, Administrator administrator, String mediaUrl, short mediaType, String mediaDesc, Date mediaDate, int mediaClickTimes) {
+       this.packet = packet;
+       this.administrator = administrator;
+       this.mediaUrl = mediaUrl;
+       this.mediaType = mediaType;
+       this.mediaDesc = mediaDesc;
+       this.mediaDate = mediaDate;
+       this.mediaClickTimes = mediaClickTimes;
     }
    
     public Media(int mediaClickTimes)
@@ -86,20 +95,16 @@ public class Media  implements java.io.Serializable {
     public void setMediaDate(Date mediaDate) {
         this.mediaDate = mediaDate;
     }
-
-    /**
-     * @return the mediaClickTimes
-     */
     public int getMediaClickTimes() {
-        return mediaClickTimes;
+        return this.mediaClickTimes;
     }
-
-    /**
-     * @param mediaClickTimes the mediaClickTimes to set
-     */
+    
     public void setMediaClickTimes(int mediaClickTimes) {
         this.mediaClickTimes = mediaClickTimes;
     }
+
+
+
 
 }
 

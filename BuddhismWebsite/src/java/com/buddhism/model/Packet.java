@@ -1,5 +1,5 @@
 package com.buddhism.model;
-// Generated 2012-7-7 19:04:37 by Hibernate Tools 3.2.1.GA
+// Generated 2012-9-18 3:12:13 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -25,15 +25,14 @@ public class Packet  implements java.io.Serializable {
     }
 
 	
-    public Packet(Administrator administrator, String packetTitle, Date packetDate, String packetFirst, short packetType, String packetDesc) {
+    public Packet(Administrator administrator, String packetTitle, Date packetDate, String packetFirst, short packetType) {
         this.administrator = administrator;
         this.packetTitle = packetTitle;
         this.packetDate = packetDate;
         this.packetFirst = packetFirst;
         this.packetType = packetType;
-        this.packetDesc = packetDesc;
     }
-    public Packet(Administrator administrator, String packetTitle, Date packetDate, String packetFirst, short packetType, Set<Media> medias, String packetDesc) {
+    public Packet(Administrator administrator, String packetTitle, Date packetDate, String packetFirst, short packetType, String packetDesc, Set<Media> medias) {
        this.administrator = administrator;
        this.packetTitle = packetTitle;
        this.packetDate = packetDate;
@@ -85,26 +84,19 @@ public class Packet  implements java.io.Serializable {
     public void setPacketType(short packetType) {
         this.packetType = packetType;
     }
+    public String getPacketDesc() {
+        return this.packetDesc;
+    }
+    
+    public void setPacketDesc(String packetDesc) {
+        this.packetDesc = packetDesc;
+    }
     public Set<Media> getMedias() {
         return this.medias;
     }
     
     public void setMedias(Set<Media> medias) {
         this.medias = medias;
-    }
-
-    /**
-     * @return the packetDesc
-     */
-    public String getPacketDesc() {
-        return packetDesc;
-    }
-
-    /**
-     * @param packetDesc the packetDesc to set
-     */
-    public void setPacketDesc(String packetDesc) {
-        this.packetDesc = packetDesc;
     }
 
 

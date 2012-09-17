@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012-9-18 3:12:13 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.buddhism.model.Message" table="message" catalog="buddhismdb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="messageContent" type="string">
+            <column name="message_Content" length="500" not-null="true" />
+        </property>
+        <property name="messageAuthor" type="string">
+            <column name="message_Author" length="100" not-null="true" />
+        </property>
+        <property name="messageDate" type="timestamp">
+            <column name="message_Date" length="19" not-null="true" />
+        </property>
+        <property name="messageLink" type="string">
+            <column name="message_Link" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

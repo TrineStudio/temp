@@ -11,5 +11,6 @@
     <mapping resource="com/buddhism/model/Administrator.hbm.xml"/>
     <mapping resource="com/buddhism/model/Media.hbm.xml"/>
     <mapping resource="com/buddhism/model/Packet.hbm.xml" />
+    <mapping resource="com/buddhism/model/Message.hbm.xml" />
   </session-factory>
 </hibernate-configuration>

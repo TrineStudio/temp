@@ -28,7 +28,7 @@
             <property name="url" value="jdbc:mysql://localhost:3306/buddhismdb?useUnicode=true&amp;characterEncoding=UTF8"/>
             <!--指定连接数据库的用户名-->
             <property name="username" value="root"/>
-            <property name="password" value="root"/>
+            <property name="password" value="123456"/>
     </bean>
     <!--加入hibernate的SessionFactory的定义-->
     <bean id="sessionFactory" 
@@ -40,6 +40,7 @@
                     <value>com/buddhism/model/Media.hbm.xml</value>
                     <value>com/buddhism/model/Post.hbm.xml</value>
                     <value>com/buddhism/model/Packet.hbm.xml</value>
+                    <value>com/buddhism/model/Message.hbm.xml</value>
                 </list>
             </property>
             <property name="hibernateProperties">
@@ -84,6 +85,16 @@
     <bean id="avService" class="com.buddhism.service.AVServiceImpl">
         <property name="avDao">
             <ref bean="avDao"></ref>
+        </property>
+    </bean>
+    <bean id="msgDao" class="com.buddhism.dao.msgDaoImpl">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"></ref>
+        </property>
+    </bean>
+    <bean id="msgService" class="com.buddhism.service.msgServiceImpl">
+        <property name="msgDao">
+            <ref bean="msgDao"></ref>
         </property>
     </bean>
     <bean id="newArticle" class="com.buddhism.controller.newPageAction">
