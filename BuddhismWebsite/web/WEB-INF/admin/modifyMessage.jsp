@@ -73,11 +73,11 @@
             <form action="modifyMessage.action">
                 <p>		
                     <label for="textfield"><strong>消息</strong></label>
-                    <input type="text" name="title" id="textfield" class="inputbox" style="width: 580px;" value="<s:property value="messageContent"/>"/>                     
+                    <input type="text" name="messageContent" id="textfield" class="inputbox" style="width: 580px;" value="<s:property value="messageContent"/>"/>                     
                 </p>
                 <p>		
                     <label for="textfield"><strong>链接</strong></label>
-                    <input type="text" name="description" id="textfield" class="inputbox" style="width: 580px;" value="<s:property value="messageUrl" />"/>                     
+                    <input type="text" name="messageUrl" id="textfield" class="inputbox" style="width: 580px;" value="<s:property value="messageUrl" />"/>                     
                 </p>                    
                 <input type="submit" value="修改" class="btn" /> 
             </form>
@@ -131,7 +131,7 @@
             <li> <a class="expanded heading">消息管理</a>
                 <ul class="navigation">
                     <li><a href="messageList.action">消息管理</a></li>
-                    <li><a href="singleMessage.action?messageIndex=1">添加消息</a></li>
+                    <li><a href="singleMessage.action?messageIndex=-1">添加消息</a></li>
                 </ul>
             </li>
             <li><a class="expanded heading">帐户管理</a>

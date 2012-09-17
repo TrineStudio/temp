@@ -73,11 +73,11 @@
             <form action="addMessage.action" method="post">
                 <p>		
                     <label for="textfield"><strong>消息</strong></label>
-                    <input type="text" name="title" id="textfield" class="inputbox" style="width: 580px;"/>                     
+                    <input type="text" name="messageContent" id="textfield" class="inputbox" style="width: 580px;"/>                     
                 </p>
                 <p>		
                     <label for="textfield"><strong>链接</strong></label>
-                    <input type="text" name="description" id="textfield" class="inputbox" style="width: 580px;"/>                     
+                    <input type="text" name="messageUrl" id="textfield" class="inputbox" style="width: 580px;"/>                     
                 </p>                    
                 <input type="submit" value="添加" class="btn" /> 
             </form>

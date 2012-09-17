@@ -105,7 +105,7 @@
                                     <a href="addMediaDes?mediaId=<s:property value="id" />" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
                                     <a href="deletePhoto?mediaId=<s:property value="id" />" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
                                     <s:if test="packetId!=0">
-                                        <a href="setAlbumFirst?mediaId=<s:property value="id" />&packetID=<s:property value="packetId"/>" title=""><img src="<%=path%>/admin/img/icons/archlogo.png" alt="Top" /></a>
+                                        <a href="setAlbumFirst?mediaID=<s:property value="id" />&packetID=<s:property value="packetId"/>" title=""><img src="<%=path%>/admin/img/icons/archlogo.png" alt="Top" /></a>
                                     </s:if>
                                 </td>
                                 <td><input type="checkbox" value="${id}" name="checkall" /></td>
@@ -211,7 +211,7 @@
             <li> <a class="expanded heading">消息管理</a>
                 <ul class="navigation">
                     <li><a href="messageList.action">消息管理</a></li>
-                    <li><a href="singleMessage.action?messageIndex=1">添加消息</a></li>
+                    <li><a href="singleMessage.action?messageIndex=-1">添加消息</a></li>
                 </ul>
             </li>            
             <li><a class="collapsed heading">帐户管理</a>

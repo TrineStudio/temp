@@ -4,5 +4,6 @@
 
 *.war
 *.ear
+*.properties
 /BuddhismWebsite/nbproject/private/
 /BuddhismWebsite/build/

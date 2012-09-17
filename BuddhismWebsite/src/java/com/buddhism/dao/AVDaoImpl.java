@@ -155,7 +155,8 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     public Media getM(int id) 
     {
         String hql = MEDIAQUERYSTRING + "m.id = ?";
-        return (Media)getHibernateTemplate().find(hql, id).get(0);
+        List list = getHibernateTemplate().find(hql, id);
+        return (Media)list.get(list.size() - 1);
     }
 
     @Override

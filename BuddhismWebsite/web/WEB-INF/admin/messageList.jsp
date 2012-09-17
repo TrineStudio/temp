@@ -61,14 +61,29 @@
                     	<tr>
                             <th>作者</th>
                             <th>消息</th>
-                            <th>时间</th>
+                            <th>链接</th>
+                            <th>时间</th>                            
                             <th>操作</th>
                             <th><input name="" type="checkbox" value="" id="checkboxall" /></th>
                         </tr>
                     </thead>
                     
                     <tbody>
+                        <s:iterator value="messages" id="singleMessage">
+                         <tr class="alt">
                         
+                            <td><s:property value="singleMessage.messageAuthor"/></td>
+                            <td><s:property value="singleMessage.messageContent"/></td>
+                            <td><s:property value="singleMessage.messageLink"/></td>
+                            <td><s:date name="singleMessage.messageDate" format="yyyy-MM-dd" /></td>
+                            
+                            <td>
+                            	<a href="singleMessage?messageIndex=${id}" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>            	
+                                <a href="deleteMessage.action?messageID=${id}" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
+                            </td>
+                            <td><input type="checkbox" value="${id}" name="checkall" /></td>
+                        </tr>
+                        </s:iterator>                        
                     </tbody>
                 </table>
                 <div class="extrabottom">
@@ -140,7 +155,7 @@
             <li> <a class="expanded heading">消息管理</a>
                 <ul class="navigation">
                     <li><a href="messageList.action">消息管理</a></li>
-                    <li><a href="singleMessage.action?messageIndex=1">添加消息</a></li>
+                    <li><a href="singleMessage.action?messageIndex=-1">添加消息</a></li>
                 </ul>
             </li>            
             <li><a class="expanded heading">帐户管理</a>

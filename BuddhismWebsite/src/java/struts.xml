@@ -342,7 +342,12 @@
             <interceptor-ref name="myDefault" />
             <result name="login">/WEB-INF/admin/login.jsp</result>       
             <result name="SUCCESS">/WEB-INF/admin/messageList.jsp</result>               
-        </action>        
+        </action>      
+        <action name="deleteMessage" class="messageList" method="deleteMessage">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>       
+            <result name="SUCCESS" type="redirect">messageList.action</result>               
+        </action>             
 
     </package>
     
