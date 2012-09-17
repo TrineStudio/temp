@@ -148,6 +148,12 @@
                     <li class="heading selected">上传视频</li>
                     <li><a href="videoPage" title="">视频管理</a></li>
                 </ul>
+            </li>     
+            <li> <a class="expanded heading">消息管理</a>
+                <ul class="navigation">
+                    <li><a href="messageList.action">消息管理</a></li>
+                    <li><a href="singleMessage.action?messageIndex=1">添加消息</a></li>
+                </ul>
             </li>            
             <li><a class="expanded heading">帐户管理</a>
                 <ul class="navigation">

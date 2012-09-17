@@ -322,6 +322,27 @@
             <result name="login">/WEB-INF/admin/login.jsp</result>       
             <result name="SUCCESS" type="redirect">photoPage.action</result>      
         </action>
+        <action name="singleMessage" class="singleMessage">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>       
+            <result name="SUCCESS">/WEB-INF/admin/addMessage.jsp</result>               
+            <result name="MODIFY">/WEB-INF/admin/modifyMessage.jsp</result>
+        </action>
+        <action name="addMessage" class="singleMessage" method="addMessage" >
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>       
+            <result name="SUCCESS" type="redirect">messageList.action</result>               
+        </action>
+        <action name="modifyMessage" class="singleMessage" method="modifyMessage" >
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>       
+            <result name="SUCCESS" type="redirect">messageList.action</result>               
+        </action>
+        <action name="messageList" class="messageList">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>       
+            <result name="SUCCESS">/WEB-INF/admin/messageList.jsp</result>               
+        </action>        
 
     </package>
     

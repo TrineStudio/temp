@@ -36,9 +36,9 @@
     	<ul>	
         	<li><img src="<%=path%>/admin/img/icons/icon_breadcrumb.png" alt="Location" /></li>
         	<li><strong>当前位置:</strong></li>
-            <li><a href="#" title="">文章管理</a></li>
+            <li><a href="#" title="">消息管理</a></li>
             <li>/</li>
-            <li class="current">发布文章</li>
+            <li class="current">消息列表</li>
             
         </ul>
     </div>
@@ -48,20 +48,11 @@
     <div id="rightside">
 
         <div class="contentcontainer" >
-        <div class="headings">
-            <h2>文章类别</h2>
-        </div>
-         <div class="contentbox">
-             <form action="getByTypeAction">
-                <s:select list="cataList" name="type" listKey="catId" listValue="catName" emptyOption="false"/> <input type="submit" value="确定" class="btn" /> 
-             </form>
-                 
-           </div>
        	</div>      
         <!-- Alternative Content Box Start -->
          <div class="contentcontainer">
             <div class="headings altheading">
-                <h2>文章列表</h2>
+                <h2>消息列表</h2>
             </div>
             <div class="contentbox">
                 <form action="multipleDelete.action">
@@ -69,7 +60,7 @@
                 	<thead>
                     	<tr>
                             <th>作者</th>
-                            <th>标题</th>
+                            <th>消息</th>
                             <th>时间</th>
                             <th>操作</th>
                             <th><input name="" type="checkbox" value="" id="checkboxall" /></th>
@@ -77,28 +68,7 @@
                     </thead>
                     
                     <tbody>
-                        <input type="hidden" value="3" name="type"/>
-                         <s:iterator value="posts" id="singlePost">
-                         <tr class="alt">
                         
-                            <td><s:property value="administrator.adName"/></td>
-                            <td><s:property value="postTitle"/></td>
-                            <td><s:date name="postDate" format="yyyy-MM-dd" /></td>
-                            <!--<td><s:property value="type"/></td> -->
-                            
-                            <td>
-                            	<a href="editArticle?postId=${id}" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
-                                <s:if test="postUp == true">
-                                    <a href="UpAction.action?id=${id}&&isUp=false" title=""><img src="<%=path%>/admin/img/icons/icon_unapprove.png" alt="Unapprove" /></a>
-                                </s:if>
-                                <s:else>
-                                    <a href="UpAction.action?id=${id}&&isUp=true" title=""><img src="<%=path%>/admin/img/icons/icon_approve.png" alt="Approve" /></a>
-                                </s:else>                       	
-                                <a href="removeToTrash.action?id=${id}" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
-                            </td>
-                            <td><input type="checkbox" value="${id}" name="checkall" /></td>
-                        </tr>
-                        </s:iterator>
                     </tbody>
                 </table>
                 <div class="extrabottom">
@@ -115,34 +85,6 @@
                     </div>                    
                 </div>
                 </form>
-                <ul class="pagination">
-                    <s:if test="currentIndex != 0">
-                        <li class="text"><a href="previousPageAction">前一页</a></li>
-                    </s:if>
-                    <li class="page"><a href="#" title=""><s:property value="currentIndex + 1"/></a></li>
-                    <%
-                    
-                        int currentIndex = (Integer)request.getAttribute("currentIndex");
-                        int maxIndex = (Integer)(request.getAttribute("maxIndex"));
-                    
-                        int pageCount = maxIndex - currentIndex;
-     
-                        if (pageCount > 3)
-                            pageCount = 3; 
-                        
-                        for (int i = 0; i < pageCount; i++)
-                        {
-                            
-                            
-                    %>
-                        <li><a href="JumpToManagement.action?currentIndex=<%=currentIndex + i%>" title=""><%=i + currentIndex + 1%></a></li>
-                    <%
-                        }
-                    %>
-                    <s:if test="currentIndex >= maxIndex">
-                        <li class="text"><a href="nextPageAction" title="">后一页</a></li>
-                    </s:if>
-                </ul>
                 <div style="clear: both;"></div>
             </div>
             

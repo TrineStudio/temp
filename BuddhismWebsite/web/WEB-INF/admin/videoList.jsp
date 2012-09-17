@@ -196,6 +196,12 @@
                     <li  class="heading selected">视频管理</li>
                 </ul>
             </li>
+            <li> <a class="expanded heading">消息管理</a>
+                <ul class="navigation">
+                    <li><a href="messageList.action">消息管理</a></li>
+                    <li><a href="singleMessage.action?messageIndex=1">添加消息</a></li>
+                </ul>
+            </li>            
             <li><a class="expanded heading">帐户管理</a>
                 <ul class="navigation">
                     <li><a href="#" title="">用户资料</a></li>

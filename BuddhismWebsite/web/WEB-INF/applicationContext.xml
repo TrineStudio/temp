@@ -267,4 +267,9 @@
             <ref bean="avService"/>
         </property>
     </bean>
+    <bean id="singleMessage" class="com.buddhism.controller.SingleMessage">
+    </bean>
+    <bean id="messageList" class="com.buddhism.controller.MessageList">
+        
+    </bean>
 </beans>

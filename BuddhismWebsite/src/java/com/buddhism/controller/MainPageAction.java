@@ -85,6 +85,8 @@ public class MainPageAction implements SessionAware
 
     public String execute(){
     
+        postImages.clear();
+        
         getSession().remove("pictures");
         
         informs = service.getPost((short)Constants.informs, 0, 5);

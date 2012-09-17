@@ -188,7 +188,7 @@ public class AVServiceImpl implements AVService
     @Override
     public void setPacketFirst(int packetId, int mediaId) 
     {
-        throw new UnsupportedOperationException("Not supported yet.");
+       avDao.updateP(packetId, mediaId);
     }
     
 }

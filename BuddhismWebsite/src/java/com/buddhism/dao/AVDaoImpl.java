@@ -42,7 +42,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
        query.setParameter("id", (short)id);
        
        s.getTransaction().commit();
-       s.close();
+       //s.close();
        
        return (Packet)query.list().get(0);
     }
@@ -58,7 +58,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
        query.setParameter("title", name);
        
        s.getTransaction().commit();
-       s.close();
+       //s.close();
        
        return (Packet)query.list().get(0);
     }
@@ -342,7 +342,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
         
         List list = query.list();
         s.getTransaction().commit();
-        s.close();
+        //s.close();
         
         return ((Media)list.get(0)).getMediaClickTimes();
     }
@@ -361,7 +361,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
         criteria.add(Expression.eq("mediaType", (short)type));
         List list = criteria.list();
         s.getTransaction().commit();
-        s.close();
+        //s.close();
         
         return list.size();
     }

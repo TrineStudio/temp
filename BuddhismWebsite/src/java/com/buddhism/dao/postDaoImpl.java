@@ -152,7 +152,7 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
        
        Query query = s.createQuery("update Post p set p.postUp = :up where p.id = :id");
        query.setParameter("up", update);
-       query.setParameter("id", (short)id);
+       query.setParameter("id", id);
        
        query.executeUpdate();
        
