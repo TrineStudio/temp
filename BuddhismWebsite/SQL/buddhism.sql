@@ -52,34 +52,6 @@ INSERT INTO `media` VALUES (1,'/BuddhismWebsite/media/photos/image/2012090522122
 UNLOCK TABLES;
 
 --
--- Table structure for table `administrator`
---
-
-DROP TABLE IF EXISTS `administrator`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `administrator` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `ad_Name` varchar(60) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `ad_Password` varchar(60) NOT NULL,
-  `ad_RanNum` varchar(100) NOT NULL,
-  `ad_Level` int(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `userName` (`ad_Name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `administrator`
---
-
-LOCK TABLES `administrator` WRITE;
-/*!40000 ALTER TABLE `administrator` DISABLE KEYS */;
-INSERT INTO `administrator` VALUES (1,'admin','9cb3282fbf13b11ea04b7e1371b3128ee02c5111','vXpqxP2o',0),(3,'ghest','9cb2939ff9a2b7953fa01a919392facd8714f54b','1\']=Cx}X',0);
-/*!40000 ALTER TABLE `administrator` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `post`
 --
 
@@ -110,6 +82,60 @@ LOCK TABLES `post` WRITE;
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
 INSERT INTO `post` VALUES (19,1,'2012-07-02 21:08:42','1','<b>1</b>',0,1,0,0),(20,1,'2012-07-02 21:08:47','2','<strong>2</strong>',0,5,0,0),(21,1,'2012-07-02 21:08:54','3','<strong>3</strong>',0,2,0,0),(22,1,'2012-07-02 21:08:58','4','<strong>4</strong>',0,4,0,0),(23,1,'2012-07-02 21:09:04','5','<strong>5</strong>',0,3,0,0),(24,1,'2012-07-02 21:09:09','6','<strong>6</strong>',0,7,0,0),(25,1,'2012-07-02 21:09:17','7','<strong>7</strong>',0,8,0,0),(26,1,'2012-07-03 16:29:45','8','<strong>8</strong>',0,6,0,0),(27,1,'2012-07-02 21:09:32','9','<strong>9</strong>',0,6,0,0),(28,1,'2012-07-02 21:09:40','10','<strong>10</strong>',0,9,0,0),(29,1,'2012-07-02 21:09:45','11','<strong>11</strong>',0,10,0,0),(30,1,'2012-07-02 21:09:49','12','<strong>12</strong>',0,11,0,0),(31,1,'2012-07-03 16:29:33','lalalal','fhaljglajgjajgja',0,8,0,0),(32,1,'2012-07-03 16:40:52','Hello','<strong>Hello</strong>',0,1,0,0),(33,1,'2012-07-03 16:41:06','赞助','<b>赞助</b>',0,17,0,0);
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `message`
+--
+
+DROP TABLE IF EXISTS `message`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `message` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `message_Content` varchar(500) NOT NULL,
+  `message_Author` varchar(100) NOT NULL,
+  `message_Date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `message_Link` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `message`
+--
+
+LOCK TABLES `message` WRITE;
+/*!40000 ALTER TABLE `message` DISABLE KEYS */;
+/*!40000 ALTER TABLE `message` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `administrator`
+--
+
+DROP TABLE IF EXISTS `administrator`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `administrator` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `ad_Name` varchar(60) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `ad_Password` varchar(60) NOT NULL,
+  `ad_RanNum` varchar(100) NOT NULL,
+  `ad_Level` int(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `userName` (`ad_Name`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `administrator`
+--
+
+LOCK TABLES `administrator` WRITE;
+/*!40000 ALTER TABLE `administrator` DISABLE KEYS */;
+INSERT INTO `administrator` VALUES (1,'admin','9cb3282fbf13b11ea04b7e1371b3128ee02c5111','vXpqxP2o',0),(3,'ghest','9cb2939ff9a2b7953fa01a919392facd8714f54b','1\']=Cx}X',0);
+/*!40000 ALTER TABLE `administrator` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -153,4 +179,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-09-11 16:01:06
+-- Dump completed on 2012-09-18  3:59:45
