@@ -98,6 +98,16 @@ public class SingleMessage implements SessionAware{
     public String modifyMessage()
     {
         
+        Message msg = new Message();
+        
+        msg = service.getMsg(messageIndex);
+        msg.setMessageContent(messageContent);
+        msg.setMessageDate(new Date());
+        msg.setMessageLink(messageUrl);
+        msg.setMessageAuthor(((Administrator)session.get("User")).getAdName());
+        
+        service.updateMsg(null);
+        
         return "SUCCESS";
     }
     

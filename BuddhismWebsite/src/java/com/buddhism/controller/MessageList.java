@@ -58,12 +58,12 @@ public class MessageList implements SessionAware{
     
     public String execute()
     {
-        
+        messages = service.getMsg();
         
         return "SUCCESS";
     }   
     
-    public String deleteMessage(int messageID)
+    public String deleteMessage()
     {
         
         service.deleteMsg(messageID);

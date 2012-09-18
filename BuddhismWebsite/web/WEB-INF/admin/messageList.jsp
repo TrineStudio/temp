@@ -72,10 +72,10 @@
                         <s:iterator value="messages" id="singleMessage">
                          <tr class="alt">
                         
-                            <td><s:property value="singleMessage.messageAuthor"/></td>
-                            <td><s:property value="singleMessage.messageContent"/></td>
-                            <td><s:property value="singleMessage.messageLink"/></td>
-                            <td><s:date name="singleMessage.messageDate" format="yyyy-MM-dd" /></td>
+                            <td>${messageAuthor}</td>
+                            <td>${messageContent}</td>
+                            <td>${messageLink}</td>
+                            <td><s:date name="messageDate" format="yyyy-MM-dd" /></td>
                             
                             <td>
                             	<a href="singleMessage?messageIndex=${id}" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>            	
@@ -136,7 +136,7 @@
                 <a class="expanded heading">文章管理</a>
                  <ul class="navigation">
                     <li><a href="newPage" title="">发布文章</a></li>
-                    <li  class="heading selected">文章列表</li>
+                    <li><a href="managementAction" title="">文章列表</a></li>
                     <li><a href="articleTrash" title="">文章回收站</a></li>
                 </ul>
             </li>
@@ -154,7 +154,7 @@
             </li>         
             <li> <a class="expanded heading">消息管理</a>
                 <ul class="navigation">
-                    <li><a href="messageList.action">消息管理</a></li>
+                    <li  class="heading selected">消息管理</li>
                     <li><a href="singleMessage.action?messageIndex=-1">添加消息</a></li>
                 </ul>
             </li>            

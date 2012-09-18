@@ -5,9 +5,12 @@
 package com.buddhism.dao;
 
 import com.buddhism.model.Message;
+import java.sql.SQLException;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 /**
@@ -71,6 +74,20 @@ public class msgDaoImpl extends HibernateDaoSupport implements msgDao
     {
         List list = getHibernateTemplate().find("select count(*) from Message");
         return ((Long)list.iterator().next()).intValue();
+    }
+
+    @Override
+    public List<Message> getMsg() 
+    {
+        return getHibernateTemplate().executeFind(new HibernateCallback(){
+
+            @Override
+            public Object doInHibernate(Session sn) throws HibernateException, SQLException 
+            {
+                    Query query = sn.createQuery("from Message as m order by m.messageDate desc");
+                    return query.list();
+            }
+        });
     }
     
 }

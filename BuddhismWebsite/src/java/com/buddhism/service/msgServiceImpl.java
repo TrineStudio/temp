@@ -8,6 +8,7 @@ import com.buddhism.dao.msgDaoImpl;
 import com.buddhism.model.Message;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -73,6 +74,11 @@ public class msgServiceImpl implements msgService
      */
     public void setMsgDao(msgDaoImpl msgDao) {
         this.msgDao = msgDao;
+    }
+
+    @Override
+    public List<Message> getMsg() {
+        return msgDao.getMsg();
     }
     
 }

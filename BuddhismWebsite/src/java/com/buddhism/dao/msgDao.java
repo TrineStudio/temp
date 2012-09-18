@@ -5,6 +5,7 @@
 package com.buddhism.dao;
 
 import com.buddhism.model.Message;
+import java.util.List;
 
 /**
  *
@@ -21,4 +22,6 @@ public interface msgDao
     public void deleteMsg(int id);
     
     public int getMsgNumber();
+    
+    public List<Message> getMsg();
 }

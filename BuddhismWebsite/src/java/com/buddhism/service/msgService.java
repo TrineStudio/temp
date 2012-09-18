@@ -5,6 +5,7 @@
 package com.buddhism.service;
 
 import com.buddhism.model.Message;
+import java.util.List;
 
 /**
  *
@@ -13,6 +14,8 @@ import com.buddhism.model.Message;
 public interface msgService 
 {
     public Message getMsg(int id); //根据id获取某条message
+    
+    public List<Message> getMsg(); //获取所有的message
     
     public int getMsgNumber(); //获取所有的message的数量
     
