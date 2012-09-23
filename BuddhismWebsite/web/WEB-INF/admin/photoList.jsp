@@ -196,20 +196,20 @@
                 </ul>
             </li>
             <li>
-                <a class="collapsed heading">文章管理</a>
+                <a class="expanded heading">文章管理</a>
                  <ul class="navigation">
                     <li><a href="newPage" title="">发布文章</a></li>
                     <li><a href="managementAction" title="">文章列表</a></li>
                     <li><a href="articleTrash" title="">文章回收站</a></li>
                 </ul>
             </li>
-            <li><a class="collapsed heading">图片管理</a>
+            <li><a class="expanded heading">图片管理</a>
                 <ul class="navigation">
                     <li><a href="addPhoto" title="">上传照片</a></li>
                     <li  class="heading selected">相册管理</li>
                 </ul>
             </li>
-            <li><a class="collapsed heading">视频管理</a>
+            <li><a class="expanded heading">视频管理</a>
                 <ul class="navigation">
                     <li><a href="addVideo" title="">上传视频</a></li>
                     <li><a href="videoPage" title="">视频管理</a></li>
@@ -221,7 +221,7 @@
                     <li><a href="singleMessage.action?messageIndex=-1">添加消息</a></li>
                 </ul>
             </li>            
-            <li><a class="collapsed heading">帐户管理</a>
+            <li><a class="expanded heading">帐户管理</a>
                 <ul class="navigation">
                     <li><a href="#" title="">用户资料</a></li>
                     <s:if test="#session.User.adLevel == 0">
