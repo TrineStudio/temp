@@ -59,6 +59,10 @@ public class TrashMultiAction implements SessionAware{
     {
         HttpServletRequest request = ServletActionContext.getRequest();
         String[] checkID = request.getParameterValues("checkall");
+        
+        if (checkID == null)
+            return "SUCCESS";
+        
         if (selectIndex == 1)
             deleteData(checkID);
         else if (selectIndex == 2)

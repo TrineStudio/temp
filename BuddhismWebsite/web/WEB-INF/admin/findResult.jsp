@@ -53,6 +53,7 @@
                 <h2>文章列表</h2>
             </div>
             <div class="contentbox">
+                <form action="multipleDelete.action">
             	<table width="100%">
                 	<thead>
                     	<tr>
@@ -64,6 +65,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <input type="hidden" value="4" name="type"/>
                          <s:iterator value="posts" id="singlePost">
                          <tr class="alt">
                         
@@ -85,7 +87,7 @@
                             	
                                 <a href="removeToTrash.action?id=${id}" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
                             </td>
-                            <td><input type="checkbox" value="" name="checkall" /></td>
+                            <td><input type="checkbox" value="${id}" name="checkall" /></td>
                         </tr>
                         </s:iterator>
                     </tbody>
@@ -98,11 +100,12 @@
                     </ul>
                     <div class="bulkactions">
                     	<select>
-                        	<option>操作</option>
+                        	<option>删除</option>
                         </select>
                         <input type="submit" value="应用" class="btn" />
                     </div>
                 </div>
+                </form>
                 <div style="clear: both;"></div>
             </div>
             

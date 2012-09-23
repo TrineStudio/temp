@@ -209,7 +209,7 @@
         <action name="saveArticle" class="editArticle" method="saveChange">
             <interceptor-ref name="myDefault" />
             <result name="login">/WEB-INF/admin/login.jsp</result>            
-            <result name="SUCCESS">/WEB-INF/admin/index.jsp</result>
+            <result name="SUCCESS" type="redirect">managementAction.action</result>
         </action>        
         <action name="addPhoto" class="addPhoto">
             <interceptor-ref name="myDefault" />
@@ -305,6 +305,7 @@
             <result name="PHOTO" type="redirect">photoPage.action</result>
             <result name="VIDEO" type="redirect">videoPage.action</result>
             <result name="ARTICLE" type="redirect">managementAction.action</result>
+            <result name="TRASH" type="redirect">trashAction</result>
             <result name="login">/WEB-INF/admin/login.jsp</result>
         </action>
         <action name="restoreArticle" class="restoreArticle">

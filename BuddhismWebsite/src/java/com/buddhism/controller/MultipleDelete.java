@@ -60,7 +60,8 @@ public class MultipleDelete implements SessionAware{
         HttpServletRequest request = ServletActionContext.getRequest();
         String[] checkID = request.getParameterValues("checkall");
         
-        deleteData(checkID);
+        if (checkID != null)
+            deleteData(checkID);
 
         if (type == 1)
             return "PHOTO";
@@ -68,6 +69,8 @@ public class MultipleDelete implements SessionAware{
             return "VIDEO";
         else if (type ==3)
             return "ARTICLE";
+        else if (type == 4)
+            return "TRASH";
         return "NONE";                    
     }
     
@@ -76,7 +79,7 @@ public class MultipleDelete implements SessionAware{
         for (int i = 0; i != checkID.length; i++)
         {
             int id = Integer.parseInt(checkID[i]);
-            if (type == 3)
+            if (type == 3 || type == 4)
                 pService.removePost(id);
             else
                 aService.deleteMedia(id);
