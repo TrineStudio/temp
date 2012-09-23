@@ -20,11 +20,13 @@
 <!-- Theme End -->
 
  <link href="<%=path%>/css/uploadify.css" rel="stylesheet" type="text/css" />
-
+<link type="text/css" href="<%=path %>/css/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
  <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="<%=path%>/js/jquery.uploadify-3.1.min.js"></script>
 <script charset="utf-8" src="<%=path%>/kindeditor/kindeditor.js"></script>
 <script charset="utf-8" src="<%=path%>/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="<%=path%>/js/jquery-ui-1.8.20.custom.min.js"></script>
+
 <script>
         var editor;
         
@@ -32,6 +34,7 @@
                 editor = K.create('#editor_id', {
                         uploadJson : '<%=path%>/kindeditor/jsp/upload_json.jsp',
                         fileManagerJson : '<%=path%>/kindeditor/jsp/file_manager_json.jsp',
+                        width:560,
                         allowFileManager : true,
                         afterUpload : function(url) {
                              var text = $("#editor_id").html();
@@ -39,6 +42,9 @@
                         }
         });
 });
+        $(function() {
+		$( "#releaseTime" ).datepicker( { dateFormat: "yy/mm/dd" });
+	});
 </script>
 
 </head>
@@ -79,7 +85,7 @@
                     <label for="releaseTime"><strong>发布时间</strong></label>
                     <input type="text" name="releaseTime" id="releaseTime" class="inputbox" value="2012/09/15" style="width:180px"/> 
                 </p>
-                <textarea id="editor_id" name="content" style="width:560px;height:300px;" class="text-input textarea">
+                <textarea id="editor_id" name="content" style="width:560px;height:400px;" class="text-input textarea">
                 &lt;strong&gt;HTML内容&lt;/strong&gt;
                 </textarea>
                 <input type="submit" value="发布" class="btn" /> 
@@ -153,7 +159,6 @@
     
     <script type="text/javascript" src="http://dwpe.googlecode.com/svn/trunk/_shared/EnhanceJS/enhance.js"></script>	
     <script type='text/javascript' src='http://dwpe.googlecode.com/svn/trunk/charting/js/excanvas.js'></script>
-    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js'></script>
 	<script type='text/javascript' src='<%=path%>/admin/scripts/jquery.wysiwyg.js'></script>
     <script type='text/javascript' src='<%=path%>/admin/scripts/visualize.jQuery.js'></script>
     <script type="text/javascript" src='<%=path%>/admin/scripts/functions.js'></script>

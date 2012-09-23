@@ -21,8 +21,20 @@
         <%
             List<Post> informs = (List<Post>) session.getAttribute("informs");
             for (int i = 0; i != informs.size(); i++) {
+                String postTitle = informs.get(i).getPostTitle();
+                String allTitle = postTitle;
+                if(postTitle.length() > 22)
+                {
+                    postTitle = postTitle.substring(0,22);
+                    postTitle = postTitle + "...";
+                }
+               
+                    
         %>
-        <p><a href="articlePage?id=<%= informs.get(i).getId()%>&&parentType=1&&index=-1" style="color:black"><%= informs.get(i).getPostTitle()%></a></p>
+        <p><a href="articlePage?id=<%= informs.get(i).getId()%>&&parentType=1&&index=-1" title="<%= allTitle%>">
+               
+                                                    <%=postTitle%>
+            </a></p>
         <%
             }
         %>
@@ -33,8 +45,18 @@
             List<Post> lastestMessages = (List<Post>) session.getAttribute("messages");
             for (int i = 0; i != lastestMessages.size(); i++) 
             {
+                String postTitle = lastestMessages.get(i).getPostTitle();
+                String allTitle = postTitle;
+                if(postTitle.length() > 22)
+                {
+                    postTitle = postTitle.substring(0,22);
+                    postTitle = postTitle + "...";
+                }
         %>
-        <p><a href="articlePage?id=<%= lastestMessages.get(i).getId()%>&&parentType=13&&index=-1" style="color:black"><%= lastestMessages.get(i).getPostTitle()%></a></p>
+        <p><a href="articlePage?id=<%= lastestMessages.get(i).getId()%>&&parentType=13&&index=-1" title="<%= allTitle%>">
+                <%= postTitle%>
+            </a>
+        </p>
         <%
             }
         %>    
@@ -46,7 +68,7 @@
             for (int i = 0; i != supports.size(); i++) 
             {
         %>
-        <p><a href="articlePage?id=<%= supports.get(i).getId()%>&&parentType=17&&index=-1" style="color:black"><%= supports.get(i).getPostTitle()%></a></p>
+        <p><a href="articlePage?id=<%= supports.get(i).getId()%>&&parentType=17&&index=-1" ><%= supports.get(i).getPostTitle()%></a></p>
         <%
             }
         %>             

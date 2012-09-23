@@ -6,16 +6,18 @@
         <style>
 
             /* Demo styles */
-            html,body{background:#7e2626;margin:0;}
+            html,body{background:url(../images/dust.png) repeat
+				;margin:0;}
             body{border-top:4px solid #000;}
-            .content{color:#ffffff;font:12px "helvetica neue",arial,sans-serif;width:880px;margin:20px auto;}
-            h1{font-size:16px;font-weight:normal;color:#ddd;margin:5;}
-            p{margin:0 0 20px}
-            a {color:#ffffff;text-decoration:none;}
+            .content{color:#ffffff;font:12px "helvetica neue",arial,sans-serif;width:800px;margin:20px auto;}
+            h1{font-size:16px;font-weight:normal;color:#000;margin:5;}
+            p{margin:0 0 20px;color: #000;
+			}
+            a {color:#000;text-decoration:none;}
             .cred{margin-top:20px;font-size:11px;}
 
             /* This rule is read by Galleria to define the gallery height: */
-            #galleria{height:520px}
+            #galleria{height:480px}
 
         </style>
 
@@ -48,7 +50,7 @@
           
         </div>
 
-        <p class="cred"><<<a href="#">返回相册列表</a>.</p>
+        
     </div>
 
     <script>
@@ -57,7 +59,10 @@
     Galleria.loadTheme('galleria.classic.min.js');
 
     // Initialize Galleria
-    Galleria.run('#galleria');
+    Galleria.run('#galleria',{
+    	 fullscreenCrop:true
+    	 
+    });
 
     </script>
     </body>

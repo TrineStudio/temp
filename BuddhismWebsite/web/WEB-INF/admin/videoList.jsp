@@ -54,8 +54,10 @@
          <div class="contentbox">
              <form action="getVideoByType">
                 <s:select list="catList" name="packetId" listKey="catId" listValue="catName" emptyOption="false" /> <input type="submit" value="确定" class="btn" /> 
-            </form>
-             <a href="newAlbum.action?type=1" style="color: white;text-decoration: none" class="btn">添加视频集</a>
+                             <a href="newAlbum.action?type=1" style="color: white;text-decoration: none" class="btn">添加视频集</a>
+
+             </form>
+             
                 <s:if test="packetId!=0">
                     <form action="updateVideoAlubmDesc.action">
                         <p>

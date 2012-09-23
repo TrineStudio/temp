@@ -33,6 +33,8 @@
                         uploadJson : '<%=path%>/kindeditor/jsp/upload_json.jsp',
                         fileManagerJson : '<%=path%>/kindeditor/jsp/file_manager_json.jsp',
                         allowFileManager : true,
+                        width:560,
+                        height:500,
                         afterUpload : function(url) {
                              var text = $("#editor_id").html();
                              $("#editor_id").html(text+"<img src='"+url+"' width=\"200px\"/>");

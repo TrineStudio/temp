@@ -9,7 +9,7 @@
 		<div class="logo"></div>
 		<div class="connect">
 			<div class="title">
-			友善連結
+			&nbsp;友善連結
 			</div>
 			<ul>
 				<li><a href="#">His Eminence Gosok Rinpoche</a></li>

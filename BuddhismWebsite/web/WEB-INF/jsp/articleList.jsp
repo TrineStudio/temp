@@ -34,10 +34,13 @@
                             {
                         %>
 
-                            <div class="article-list-item">
-                                <div class="title  f16 cb1"><a href="articlePage?id=<%= posts.get(i).getId() %>&&index=<%= i %>&&parentType=<s:property value="type"/>" style="color: black"><%= posts.get(i).getPostTitle() %></a></div>
-                                <div class="bold cr1">浏览次数 ; <%= posts.get(i).getPostClickTimes() %></div>
-                                <div class="info cb2">asdfasdfasdfasdfasdf</div>
+                            <div class="article-list-item clear">
+                                <div class="title  f16 cr1"><a class="cr1" href="articlePage?id=<%= posts.get(i).getId() %>&&index=<%= i %>&&parentType=<s:property value="type"/>" ><%= posts.get(i).getPostTitle() %></a>
+                                    <div class="f12 cb2" style="float:right">2012/10/10 </div>
+						<div class="cb2 f12" style="float:right">浏览次数 : <%= posts.get(i).getPostClickTimes() %>&nbsp;&nbsp;|&nbsp;&nbsp;</div>
+                                </div>
+                                
+                               
                             </div>
                             <div class="dashline"></div>
                         <%

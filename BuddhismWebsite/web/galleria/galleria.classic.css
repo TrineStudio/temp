@@ -3,11 +3,25 @@
  * Copyright (c) 2010, Aino
  * Licensed under the MIT license.
  */
+ .html,body{background:url(../images/dust.png) repeat;margin:0;} body{border-top:4px solid #000;}
+ .content{color:#000;font:12px "helvetica neue",arial,sans-serif;width:860px;margin:20px auto;}
+ h1{font-size:16px;font-weight:normal;color:#000;margin:5;}
+ p{margin:0 0 20px;color: #000;
+ }
+ a {color:#000;text-decoration:none;}
+ .cred{margin-top:20px;font-size:11px;}
 
+ /* This rule is read by Galleria to define the gallery height: */
+ #galleria{height:480px}
+            /****************************************/
 .galleria-container {
     position: relative;
     overflow: hidden;
-	background-color: #fefafa;
+	background-color: #ffffff;
+	-moz-box-shadow: 0 0 6px #3c3c3c;
+	-webkit-box-shadow: 0 0 6px #3c3c3c;
+	box-shadow: 0 0 6px #3c3c3c;
+	border: 10px solid #810404;
 }
 .galleria-container img {
     -moz-user-select: none;
@@ -38,7 +52,7 @@
     height: 40px;
     width: 60px;
 	margin: 0 5px 0 0;
-    border: 1px solid #6a2c2c;
+    border: 1px none #6a2c2c;
     float: left;
     cursor: pointer;
 	background-color: #ffffff;
@@ -51,7 +65,7 @@
     color: #fff;
     font: normal 11px/1 arial,sans-serif;
     z-index: 1;
-	background-color: #7e2626;
+	background-color: #a0a0a0;
 }
 .galleria-loader {
     background: url(classic-loader.gif) no-repeat 2px 2px #ffffff;
@@ -71,16 +85,16 @@
     position: absolute;
 }
 .galleria-info-text {
-    background-color: #940000;
+    background-color: #000000;
     padding: 12px;
     display: none;
     /* IE7 */ zoom:1;
-	opacity: 0.2;
+	opacity: 0.7;
 }
 .galleria-info-title {
     font: bold 12px/1.1 arial,sans-serif;
     margin: 0;
-    color: #fff;
+    color: #ffffff;
     margin-bottom: 7px;
 }
 .galleria-info-description {
@@ -115,7 +129,7 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
-	background: -669px -5px #ffffff;
+	background: -669px -5px ;
 }
 .notouch .galleria-info-link:hover {
     opacity: 1;

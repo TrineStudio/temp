@@ -7,7 +7,13 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
 
-<div class="header"></div>
+<div class="header">
+    <div id="search_box">
+			<input style="height: 17px;width: 153px;" class="searchinput cr1"/>
+			<div class="search_button"></div>
+		</div>
+		<div class="supportbutton"></div>
+</div>
 	<div>
 		<ul id="nav">
                     <li><a href="mainPage.action">網站首頁</a></li>
@@ -50,5 +56,63 @@
 	</ul>
 
 	
-        <div id="message"></div>
+        <div id="message">
+            <style type="text/css">  
+                
+                #list li{margin:0;padding:0;font-size:12px;}  
+                #list li{line-height:20px;height:20px;}  
+            </style>        
+            <ul id="list" style="margin:0;padding:0;font-size:12px;height:20px;overflow:hidden;">  
+                <li>“卧槽泥马”：又一网络新词1</li>  
+                <li>“卧槽泥马”：又一网络新词2</li>  
+                <li>“卧槽泥马”：又一网络新词3</li>  
+
+                <li>“卧槽泥马”：又一网络新词4</li>  
+                <li>“卧槽泥马”：又一网络新词5</li>  
+                <li>“卧槽泥马”：又一网络新词6</li>  
+                <li>“卧槽泥马”：又一网络新词7</li>  
+                <li>“卧槽泥马”：又一网络新词8</li>  
+                <li>“卧槽泥马”：又一网络新词9</li>  
+
+                <li>“卧槽泥马”：又一网络新词10</li>  
+                <li>“卧槽泥马”：又一网络新词11</li>  
+                <li>“卧槽泥马”：又一网络新词12</li>  
+                <li>“卧槽泥马”：又一网络新词13</li>  
+                <li>“卧槽泥马”：又一网络新词14</li>  
+            </ul>  
+            <script type="text/javascript">    
+                function scroll(element, delay, speed, lineHeight) {  
+                    var numpergroup = 5;  
+                    var slideBox = (typeof element == 'string')?document.getElementById(element):element;  
+                    var delay = delay||1000;  
+                    var speed=speed||20;  
+                    var lineHeight = lineHeight||20;  
+                    var tid = null, pause = false;  
+                    var liLength = slideBox.getElementsByTagName('li').length;  
+                    var lack = numpergroup-liLength%numpergroup;  
+                    for(i=0;i<lack;i++){  
+                        slideBox.appendChild(document.createElement("li"));  
+                    }  
+                    var start = function() {  
+                        tid=setInterval(slide, speed);  
+                    }  
+                    var slide = function() {  
+                        if (pause) return;  
+                        slideBox.scrollTop += 2;  
+                        if ( slideBox.scrollTop % lineHeight == 0 ) {  
+                            clearInterval(tid);  
+                            for(i=0;i<numpergroup;i++){  
+                                slideBox.appendChild(slideBox.getElementsByTagName('li')[0]);  
+                            }  
+                            slideBox.scrollTop = 0;  
+                            setTimeout(start, delay);  
+                        }  
+                    }  
+                    slideBox.onmouseover=function(){pause=true;}  
+                    slideBox.onmouseout=function(){pause=false;}  
+                    setTimeout(start, delay);  
+                }  
+                scroll('list', 5000, 1, 20 );//停留时间，相对速度（越小越快）,每次滚动多少，最好和Li的Line-height一致。   
+  
+            </script>  </div>
 

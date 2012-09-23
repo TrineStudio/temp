@@ -22,12 +22,19 @@
 <!-- Theme End -->
 <script type="text/javascript" src="http://dwpe.googlecode.com/svn/trunk/_shared/EnhanceJS/enhance.js"></script>	
 <script type='text/javascript' src='http://dwpe.googlecode.com/svn/trunk/charting/js/excanvas.js'></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-<script type="text/javascript" src="<%=path%>/js/jquery.magnifier.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js'></script>
 <script type='text/javascript' src='<%=path%>/admin/scripts/jquery.wysiwyg.js'></script>
 <script type='text/javascript' src='<%=path%>/admin/scripts/visualize.jQuery.js'></script>
 <script type="text/javascript" src='<%=path%>/admin/scripts/functions.js'></script>
+<script type="text/javascript" src='<%=path%>/colorbox/jquery.colorbox-min.js'></script>
+<link   type="text/css" rel="stylesheet" href="<%=path%>/colorbox/colorbox.css" />
+<script>
+    $(document).ready(function(){
+        $(".imggroup").colorbox({rel:'imggroup', transition:"none", width:"75%", height:"75%"});
+    });
+        
+</script>
 </head>
 <body id="homepage">
 	<div id="header">
@@ -97,7 +104,7 @@
                             <input type="hidden" value="1" name="type"/>
                             <s:iterator id="media" value="medium">
                             <tr>
-                                <td><img src="<s:property value="mediaUrl" />" width="80px" height="80px"  class="magnify"  data-magnifyby="2" /></td>
+                                <td><a class="imggroup" href="${mediaUrl}" title="${mediaDesc}"><img src="<s:property value="mediaUrl" />" width="80px" height="80px"   /></a></td>
                                 <td><s:property value="mediaDesc"/></td>
                                 <td><s:property value="administrator.adName"/></td>
                                 <td><s:property value="mediaDate"/></td>

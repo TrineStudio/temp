@@ -51,7 +51,7 @@
                 <h2>注册</h2>
             </div>
             <div class="contentbox">
-                <img src="<s:property value="media.mediaUrl" />"/>
+                <img src="<s:property value="media.mediaUrl" />" width="75%" height="75%"/>
                 <form action="modifyMediaDesc">
                     <input type="text" name="desc"/>
                     <input type="hidden" value="<s:property value="media.id"/>" name="mediaID"/>
