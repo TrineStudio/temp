@@ -37,6 +37,7 @@ public class Constants {
    
    public static String actionUrl = "articleList.action?type=";
    public static String mainPageUrl = "mainPage.action";
+   public static String albumUrl = "albumAction.action?type=";
    
 
    

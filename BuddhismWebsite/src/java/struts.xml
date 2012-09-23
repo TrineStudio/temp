@@ -360,6 +360,9 @@
         <action name="articleSearchJump" class="articleSearch" method="jump">
             <result name="SUCCESS">/WEB-INF/jsp/searchResult.jsp</result>
         </action>  
+        <action name="videoViewer" class="videoViewer">
+            <result name="SUCCESS">/WEB-INF/jsp/viewVideo.jsp</result>
+        </action>
     </package>
     
 </struts>

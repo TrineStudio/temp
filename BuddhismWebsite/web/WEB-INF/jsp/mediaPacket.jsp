@@ -35,14 +35,11 @@
 
 
                                     <div class="block f16 cb1">
-                                        <div class="img">
-                                            <a href="photoListAction?packetId=<s:property value="id"/>&title=<s:property value="packetTitle"/>" target="_blank">
-                                            <img src="<s:property value="packetFirst"/>" width="150" height="auto" style="top:10%;position: relative;" />
-                                            </a>
-                                        </div>
                                         <div class="title cw f12">
                                             <s:if test="type==5">
-                                                <a href="photoListAction?packetId=<s:property value="id"/>&title=<s:property value="packetTitle"/>" target="_blank"><s:property value="packetTitle"/></a>
+                                                <a href="photoListAction?packetId=<s:property value="id"/>&title=<s:property value="packetTitle"/>" target="_blank">
+                                                    <img src="<s:property value="packetFirst"/>" width="150" height="auto" style="top:10%;position: relative;" />
+                                                </a>
                                             </s:if>
                                             <s:else>
                                                 <a href="mediumAction?packetId=<s:property value="id"/>&title=<s:property value="packetTitle"/>"><s:property value="packetTitle"/></a>

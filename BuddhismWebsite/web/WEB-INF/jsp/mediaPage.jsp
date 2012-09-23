@@ -35,7 +35,7 @@
                         %>
 
                             <div class="article-list-item">
-                                <div class="title  f16 cb1"><a href="mediaDownload?mediaId=<%= medium.get(i).getId() %>" style="color: black">视频<%=i%></a></div>
+                                <div class="title  f16 cb1"><a href="videoViewer?id=<%= medium.get(i).getId() %>&src=<%= medium.get(i).getMediaUrl() %>&packetID=${packetId}" style="color: black">视频<%=i%></a></div>
                                 <div class="bold cr1">浏览10次</div>
                                 <div class="info cb2"><s:property value="mediaDesc"/></div>
                             </div>
