@@ -5,7 +5,9 @@
 package com.buddhism.controller;
 
 import com.buddhism.model.Constants;
+import com.buddhism.model.Message;
 import com.buddhism.model.Post;
+import com.buddhism.service.msgService;
 import com.buddhism.service.postService;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +27,34 @@ public class MainPageAction implements SessionAware
     private List<Post> posts = new ArrayList<Post>();
     private List<Post> supports = new ArrayList<Post>();
     
+    private List<Message> messages = new ArrayList<Message>();
+    
+    
     private List<String> postImages = new ArrayList<String>();
 
     private int count;
     
     private postService service;
+    
+    private msgService mService;
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public msgService getmService() {
+        return mService;
+    }
+
+    public void setmService(msgService mService) {
+        this.mService = mService;
+    }
+    
+    
 
     
     private Map session;   
@@ -81,6 +106,7 @@ public class MainPageAction implements SessionAware
         session.put("informs", informs);
         session.put("messages", lastestMessage);
         session.put("supports", supports);
+        session.put("sms", messages);
     }
 
     public String execute(){
@@ -95,6 +121,7 @@ public class MainPageAction implements SessionAware
         temples = service.getPost((short)Constants.temples, 0, 5);
         shares = service.getPost((short)Constants.shares, 0, 5);
         supports = service.getPost((short)Constants.supports, 0, 5);
+        messages = mService.getMsg();
         
         // 增加一个函数来获取所有的置顶的 post 
         

@@ -6,6 +6,10 @@ package com.buddhism.controller;
 
 import com.buddhism.model.ActionPair;
 import com.buddhism.model.Constants;
+import com.buddhism.model.Message;
+import com.buddhism.model.Post;
+import com.buddhism.service.msgService;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +23,53 @@ public class ArticleList extends SinglePostAction {
     
     private List<ActionPair> actionPair;
     
+    private List<Post> informs = new ArrayList<Post>();
+    private List<Post> lastestMessage = new ArrayList<Post>();
+    private List<Post> supports = new ArrayList<Post>();
+    
+    private List<Message> messages = new ArrayList<Message>();
+    
+    private msgService mService;
+
+    public List<Post> getInforms() {
+        return informs;
+    }
+
+    public void setInforms(List<Post> informs) {
+        this.informs = informs;
+    }
+
+    public List<Post> getLastestMessage() {
+        return lastestMessage;
+    }
+
+    public void setLastestMessage(List<Post> lastestMessage) {
+        this.lastestMessage = lastestMessage;
+    }
+
+    public List<Post> getSupports() {
+        return supports;
+    }
+
+    public void setSupports(List<Post> supports) {
+        this.supports = supports;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public msgService getmService() {
+        return mService;
+    }
+
+    public void setmService(msgService mService) {
+        this.mService = mService;
+    }            
     
     public ArticleList() 
     {
@@ -34,6 +85,10 @@ public class ArticleList extends SinglePostAction {
     public void putToSession()
     {
         session.put("posts", posts);
+        session.put("informs", informs);
+        session.put("messages", lastestMessage);
+        session.put("supports", supports);
+        session.put("sms", messages);
     }
     
     public void pairToNav()
@@ -58,6 +113,12 @@ public class ArticleList extends SinglePostAction {
         pairToNav();
         
         super.execute(); 
+        
+        lastestMessage = service.getPost((short)Constants.lastestNews, 0, 5);
+        informs = service.getPost((short)Constants.informs, 0, 5);
+        supports = service.getPost((short)Constants.supports, 0, 5);
+        messages = mService.getMsg();
+        
         putToSession();
         
         return "SUCCESS";

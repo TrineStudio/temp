@@ -121,10 +121,19 @@
         <property name="service">
             <ref bean="postService"/>
        </property>
+       <property name="mService">
+           <ref bean="msgService"/>
+        </property>
     </bean>
     <bean id="albumAction" class="com.buddhism.controller.AlbumAction">
         <property name="service">
             <ref bean="avService"/>
+       </property>
+       <property name="mService">
+           <ref bean="msgService"/>
+       </property>
+       <property name="pService">
+           <ref bean="postService"/>
        </property>
     </bean>
     <bean id="photoListAction" class="com.buddhism.controller.photoListAction">
@@ -218,7 +227,10 @@
     <bean id="articleList" class="com.buddhism.controller.ArticleList">
         <property name="service">
             <ref bean="postService"/>
-        </property>                   
+        </property>         
+        <property name="mService">
+            <ref bean="msgService"/>
+        </property>          
     </bean>
     <bean id="editArticle" class="com.buddhism.controller.EditArticle">
         <property name="service">
@@ -287,5 +299,10 @@
         <property name="service">
             <ref bean="msgService"/>
         </property>        
+    </bean>
+    <bean id="articleSearch" class="com.buddhism.controller.ArticleSearch">
+        <property name="service">
+            <ref bean="postService"/>
+        </property>
     </bean>
 </beans>

@@ -6,16 +6,24 @@ package com.buddhism.controller;
 
 import com.buddhism.model.ActionPair;
 import com.buddhism.model.Constants;
+import com.buddhism.model.Message;
 import com.buddhism.model.Packet;
+import com.buddhism.model.Post;
 import com.buddhism.service.AVService;
+import com.buddhism.service.msgService;
+import com.buddhism.service.postService;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author GodBlessedMay
  */
-public class AlbumAction {
+public class AlbumAction implements SessionAware{
+    
+    private Map session;
     
     private String title;
     private String nav;
@@ -26,6 +34,77 @@ public class AlbumAction {
     private List<Packet> albums = new ArrayList<Packet>();
     
     private int type;
+    
+    private List<Post> informs = new ArrayList<Post>();
+    private List<Post> lastestMessage = new ArrayList<Post>();
+    private List<Post> supports = new ArrayList<Post>();
+    
+    private List<Message> messages = new ArrayList<Message>();
+    
+    private msgService mService;
+    
+    private postService pService;
+    
+    @Override
+    public void setSession(Map session){
+        this.session = session;
+    }
+
+    public List<Post> getInforms() {
+        return informs;
+    }
+
+    public void setInforms(List<Post> informs) {
+        this.informs = informs;
+    }
+
+    public List<Post> getLastestMessage() {
+        return lastestMessage;
+    }
+
+    public void setLastestMessage(List<Post> lastestMessage) {
+        this.lastestMessage = lastestMessage;
+    }
+
+    public List<Post> getSupports() {
+        return supports;
+    }
+
+    public void setSupports(List<Post> supports) {
+        this.supports = supports;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public msgService getmService() {
+        return mService;
+    }
+
+    public void setmService(msgService mService) {
+        this.mService = mService;
+    }
+
+    public postService getpService() {
+        return pService;
+    }
+
+    public void setpService(postService pService) {
+        this.pService = pService;
+    }
+    
+    public void putToSession()
+    {
+        session.put("informs", informs);
+        session.put("messages", lastestMessage);
+        session.put("supports", supports);
+        session.put("sms", messages);
+    }
     
     public AlbumAction() {
     }
@@ -53,6 +132,13 @@ public class AlbumAction {
             albums = service.getPackets(0);
         else if (type == 8)
             albums = service.getPackets(1);
+        
+        lastestMessage = pService.getPost((short)Constants.lastestNews, 0, 5);
+        informs = pService.getPost((short)Constants.informs, 0, 5);
+        supports = pService.getPost((short)Constants.supports, 0, 5);
+        messages = mService.getMsg();
+        
+        putToSession();
         
         return "SUCCESS";
     }

@@ -6,12 +6,16 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
-
+<%@page import="com.buddhism.model.Message"%>
+<%@page import="java.util.List"%>
+   
 <div class="header">
     <div id="search_box">
-			<input style="height: 17px;width: 153px;" class="searchinput cr1"/>
-			<div class="search_button"></div>
-		</div>
+        <form action="articleSearch">
+            <input style="height: 17px;width: 153px;" name="key" class="searchinput cr1"/>
+            <input type="image" onClick="document.formName.submit()" class="search_img"/>
+        </form>
+    </div>
 		<div class="supportbutton"></div>
 </div>
 	<div>
@@ -63,26 +67,20 @@
                 #list li{line-height:20px;height:20px;}  
             </style>        
             <ul id="list" style="margin:0;padding:0;font-size:12px;height:20px;overflow:hidden;">  
-                <li>“卧槽泥马”：又一网络新词1</li>  
-                <li>“卧槽泥马”：又一网络新词2</li>  
-                <li>“卧槽泥马”：又一网络新词3</li>  
-
-                <li>“卧槽泥马”：又一网络新词4</li>  
-                <li>“卧槽泥马”：又一网络新词5</li>  
-                <li>“卧槽泥马”：又一网络新词6</li>  
-                <li>“卧槽泥马”：又一网络新词7</li>  
-                <li>“卧槽泥马”：又一网络新词8</li>  
-                <li>“卧槽泥马”：又一网络新词9</li>  
-
-                <li>“卧槽泥马”：又一网络新词10</li>  
-                <li>“卧槽泥马”：又一网络新词11</li>  
-                <li>“卧槽泥马”：又一网络新词12</li>  
-                <li>“卧槽泥马”：又一网络新词13</li>  
-                <li>“卧槽泥马”：又一网络新词14</li>  
+            <%
+            List<Message> messages = (List<Message>) session.getAttribute("sms");
+               for (int i = 0; i != messages.size(); i++) {
+                String messageTitle = messages.get(i).getMessageContent();
+               String link = messages.get(i).getMessageLink();                                   
+            %>
+            <li><a class="cr1" href="<%= link %>"><%= messageTitle %></a></li>
+            <%
+            }
+            %>
             </ul>  
             <script type="text/javascript">    
                 function scroll(element, delay, speed, lineHeight) {  
-                    var numpergroup = 5;  
+                    var numpergroup = 1;  
                     var slideBox = (typeof element == 'string')?document.getElementById(element):element;  
                     var delay = delay||1000;  
                     var speed=speed||20;  
@@ -90,7 +88,7 @@
                     var tid = null, pause = false;  
                     var liLength = slideBox.getElementsByTagName('li').length;  
                     var lack = numpergroup-liLength%numpergroup;  
-                    for(i=0;i<lack;i++){  
+                    for(i=0;i<lack-1;i++){  
                         slideBox.appendChild(document.createElement("li"));  
                     }  
                     var start = function() {  
@@ -112,7 +110,7 @@
                     slideBox.onmouseout=function(){pause=false;}  
                     setTimeout(start, delay);  
                 }  
-                scroll('list', 5000, 1, 20 );//停留时间，相对速度（越小越快）,每次滚动多少，最好和Li的Line-height一致。   
+                scroll('list', 6500, 1, 20 );//停留时间，相对速度（越小越快）,每次滚动多少，最好和Li的Line-height一致。   
   
             </script>  </div>
 

@@ -348,7 +348,18 @@
             <result name="login">/WEB-INF/admin/login.jsp</result>       
             <result name="SUCCESS" type="redirect">messageList.action</result>               
         </action>             
-
+        <action name="articleSearch" class="articleSearch">
+            <result name="SUCCESS">/WEB-INF/jsp/searchResult.jsp</result>
+        </action>
+        <action name="articleSearchNext" class="articleSearch" method="nextPage">
+            <result name="SUCCESS">/WEB-INF/jsp/searchResult.jsp</result>
+        </action>
+        <action name="articleSearchPre" class="articleSearch" method="previousPage">
+            <result name="SUCCESS">/WEB-INF/jsp/searchResult.jsp</result>
+        </action>                
+        <action name="articleSearchJump" class="articleSearch" method="jump">
+            <result name="SUCCESS">/WEB-INF/jsp/searchResult.jsp</result>
+        </action>  
     </package>
     
 </struts>

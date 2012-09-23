@@ -103,6 +103,18 @@ visibility: hidden;
 	position: relative;
 	border: 1px solid #f7c994;
 }
+.search_img{
+    background: url(../images/search.png);
+    width: 17px;
+    height: 15px;
+    border: 1px solid #ffffff;
+}
+.search_img:hover{
+    background: url(../images/search_h.png);
+    width: 17px;
+    height: 15px;
+    border: 1px solid #ffffff;
+}
 .search_button{
 	background: url(../images/search.png) no-repeat;
 	float: right;
