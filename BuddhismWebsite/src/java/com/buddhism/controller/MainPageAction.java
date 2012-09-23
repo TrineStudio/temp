@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
+import org.htmlparser.beans.StringBean;
 
 
 
@@ -107,6 +108,23 @@ public class MainPageAction implements SessionAware
         session.put("messages", lastestMessage);
         session.put("supports", supports);
         session.put("sms", messages);
+        
+    }
+    
+    public void getContent(Post post)
+    {
+        StringBean sb = new StringBean();
+        
+        if (post.getPostContent().contains("<img"))
+            post.setPostTitle(post.getPostTitle() + "(图)");
+        
+        sb.setLinks(false);
+        sb.setReplaceNonBreakingSpaces(true);
+        sb.setCollapse(true);
+        
+        sb.setURL("articleContent.action?id=" + post.getId());
+        
+        post.setPostContent(sb.toString());
     }
 
     public String execute(){
@@ -129,6 +147,9 @@ public class MainPageAction implements SessionAware
         
         temp = service.getUpPost();
 
+             
+
+        
         for (int i = 0; i != temp.size(); i++)
         {
             String content = temp.get(i).getPostContent();
@@ -140,6 +161,8 @@ public class MainPageAction implements SessionAware
             postImages.add(content.substring(start, end));
        }
         
+
+   
         putSession();
         
  

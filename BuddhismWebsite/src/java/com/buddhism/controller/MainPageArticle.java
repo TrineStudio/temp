@@ -4,6 +4,10 @@
  */
 package com.buddhism.controller;
 
+import com.buddhism.model.Post;
+import org.apache.struts2.ServletActionContext;
+import org.htmlparser.beans.StringBean;
+
 /**
  *
  * @author GodBlessedMay
@@ -53,6 +57,35 @@ public class MainPageArticle extends SinglePostAction {
             posts.get(i).setType();
         }
         
+        for (int i = 0; i != posts.size(); i++)
+        {
+            String content = posts.get(i).getPostContent();
+            
+            if (content.contains("<img"))
+            {
+                posts.get(i).setPostTitle(posts.get(i).getPostTitle() + "(图)");
+            }
+            
+            posts.get(i).setPostContent(splitAndFilterString(content, content.length()));
+        }
     }
+    
+    public static String splitAndFilterString(String input, int length) {  
+        if (input == null || input.trim().equals("")) {  
+            return "";  
+        }  
+        // 去掉所有html元素,  
+        String str = input.replaceAll("\\&[a-zA-Z]{1,10};", "").replaceAll(  
+                "<[^>]*>", "");  
+        str = str.replaceAll("[(/>)<]", "");  
+        int len = str.length();  
+        if (len <= length) {  
+            return str;  
+        } else {  
+            str = str.substring(0, length);  
+            str += "......";  
+        }  
+        return str;  
+    }  
     
 }

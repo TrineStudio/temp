@@ -310,4 +310,9 @@
             <ref bean="avService"/>
         </property>
     </bean>
+    <bean id="articleContent" class="com.buddhism.controller.ArticleContent">
+        <property name="service">
+            <ref bean="postService"/>
+        </property>
+    </bean>
 </beans>
